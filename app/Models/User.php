@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'age',
+        'address',
+        'image',
+        'tag'
     ];
 
     /**
@@ -42,4 +46,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /*
+        Relationships
+    */
+    //Many to  many con Messages
+    public function Messages(){
+        return $this->belongsToMany(Message::class);
+    }
+    //Many to  many con activities
+    public function Activities(){
+        return $this->belongsToMany(Activity::class);
+    }
 }
